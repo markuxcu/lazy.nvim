@@ -525,12 +525,10 @@ return
     version = "1.2.0-1"
   }, {
     name = "lazy.nvim",
-    url = "folke/lazy.nvim",
-    version = "11.17.5-1"
+    url = "markuxcu/lazy.nvim",
   }, {
     name = "lazydev.nvim",
-    url = "folke/lazydev.nvim",
-    version = "1.10.0-1"
+    url = "markuxcu/lazydev.nvim",
   }, {
     name = "lean.nvim",
     url = "Julian/lean.nvim",
