@@ -141,32 +141,21 @@ function M:title()
     self:nl()
     for c, mode in ipairs(modes) do
       local title = " " .. mode.name:sub(1, 1):upper() .. mode.name:sub(2) .. " (" .. mode.key .. ") "
-      if mode.name == "home" then
-        if self.view.state.mode == "home" then
-          title = " lazy.nvim " .. Config.options.ui.icons.lazy
-        end
+      if mode.name == "home" and self.view.state.mode == "home" then
+        title = " lazy.nvim " .. Config.options.ui.icons.lazy
       end
 
       if self.view.state.mode == mode.name then
-        if mode.name == "home" then
-          self:append(title, "LazyH1", { wrap = true })
-        else
-          self:append(title, "LazyButtonActive", { wrap = true })
-          self:highlight({ ["%(.%)"] = "LazySpecial" })
-        end
+        self:append(title, mode.name == "home" and "LazyH1" or "LazyButtonActive", { wrap = true })
       else
         self:append(title, "LazyButton", { wrap = true })
-        self:highlight({ ["%(.%)"] = "LazySpecial" })
       end
-      if c == #modes then
-        break
+      self:highlight({ ["%(.%)"] = "LazySpecial" })
+      if c ~= #modes then
+        self:append(" ")
       end
-      self:append(" ")
     end
     self:nl()
-  end
-  if self.progress.done < self.progress.total then
-    self:progressbar()
   end
   self:nl()
 

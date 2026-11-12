@@ -87,15 +87,15 @@ M.defaults = {
   ui = {
     -- a number <1 is a percentage., >1 is a fixed size
     size = { width = 0.8, height = 0.8 },
-    wrap = true, -- wrap the lines in the ui
+    wrap = false, -- wrap the lines in the ui
     -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
     border = "none",
     -- The backdrop opacity. 0 is fully opaque, 100 is fully transparent.
-    backdrop = 60,
+    backdrop = 100,
     title = nil, ---@type string only works when border is not "none"
     title_pos = "center", ---@type "center" | "left" | "right"
     -- Show pills on top of the Lazy window
-    pills = true, ---@type boolean
+    pills = false, ---@type boolean
     icons = {
       cmd = " ",
       config = "",
@@ -125,7 +125,7 @@ M.defaults = {
     -- leave nil, to automatically select a browser depending on your OS.
     -- If you want to use a specific browser, you can define it here
     browser = nil, ---@type string?
-    throttle = 1000 / 30, -- how frequently should the ui process render events
+    throttle = 100, -- how frequently should the ui process render events
     custom_keys = {
       -- You can define custom key maps here. If present, the description will
       -- be shown in the help menu.
