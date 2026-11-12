@@ -140,6 +140,19 @@ M.clone = {
       args[#args + 1] = "--filter=blob:none"
     end
 
+    -- shallow clone: only the latest commit, unless the plugin is pinned to a
+    -- specific ref (commit/tag/version/pin), which requires the full history.
+    local depth = Config.options.git.depth
+    local shallow = depth
+      and not self.plugin.pin
+      and not self.plugin.commit
+      and not self.plugin.tag
+      and not self.plugin.version
+    if shallow then
+      args[#args + 1] = "--depth=" .. depth
+      args[#args + 1] = "--no-tags"
+    end
+
     if self.plugin.submodules ~= false then
       args[#args + 1] = "--recurse-submodules"
     end

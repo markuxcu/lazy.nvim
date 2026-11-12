@@ -34,6 +34,9 @@ M.defaults = {
     -- then set the below to false. This should work, but is NOT supported and will
     -- increase downloads a lot.
     filter = true,
+    -- shallow clone depth. Set to `false` or `nil` to disable shallow clones.
+    -- Requires git >=2.19.0.
+    depth = 1,
     -- rate of network related git operations (clone, fetch, checkout)
     throttle = {
       enabled = false, -- not enabled by default
